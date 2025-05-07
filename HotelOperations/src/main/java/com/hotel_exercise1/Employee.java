@@ -1,21 +1,5 @@
 package com.hotel_exercise1;
 
-    /*
-    Employee
-
-    - Modify the Employee class to add a punchIn and punchOut methods. Each
-    time the employee punches in, we track their start time.
-   - When they punch out, we calculate how many hours they have worked and add
-    that time to their hours worked.
-    - To keep the math simple for now, each function will take a double as an input
-    argument.
-
-    punchIn(double time)
-    punchOut(double time
-    *
-    *
-    * */
-
 public class Employee {
 
     private int employeeId;
@@ -23,7 +7,6 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
-    private double punchInTime;
     private double checkInTime;
 
 
@@ -32,17 +15,14 @@ public class Employee {
         this.name = name;
         this.department = department;
         this.payRate = payRate;
+        this.hoursWorked = 0;
     }
 
-    public void checkIn(double time) {
-        if (checkInTime != 0) {
-            System.out.println("Already checked in!");
-            return;
-        }
-        checkInTime = time;
+    public void punchIn(double time) {
+        this.checkInTime = time;
     }
 
-    public void checkOut(double time) {
+    public void punchOut(double time) {
         if (checkInTime == 0) {
             System.out.println("Not checked in!");
             return;
@@ -54,7 +34,17 @@ public class Employee {
         }
 
         hoursWorked += hours;
+        checkInTime = 0;
     }
+
+    public void punchTimeCard(double time) {
+        if (checkInTime == 0) {
+            punchIn(time);
+        } else {
+            punchOut(time);
+        }
+    }
+
 
     public int getEmployeeId() {
         return employeeId;
