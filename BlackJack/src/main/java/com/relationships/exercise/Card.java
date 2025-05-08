@@ -86,5 +86,14 @@ public class Card {
 
     }
 
+    /**
+     * Returns a string representation of the card.
+     *
+     * @return A string in the format "VALUE of SUIT"
+     */
+    @Override
+    public String toString() {
+        return value + " of " + suit;
+    }
 
 }
